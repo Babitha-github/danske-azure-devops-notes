@@ -28,24 +28,29 @@ ACR_ID=$(az acr show --name $ACRNAME --resource-group $RGNAME --query "id" --out
 # Create role assignment
 az role assignment create --assignee $CLIENT_ID --role acrpull --scope $ACR_ID
 
-echo $(az sql server list --resource-group $RGNAME --query '[].name' --output tsv)'.database.windows.net'       #  sqlserver4380.database.windows.net
+echo $(az sql server list --resource-group $RGNAME --query '[].name' --output tsv)'.database.windows.net'       #  sqlserver24530.database.windows.net
 
-az acr show --name $ACRNAME --resource-group $RGNAME --query "loginServer" --output tsv                         #  acr4380.azurecr.io
+az acr show --name $ACRNAME --resource-group $RGNAME --query "loginServer" --output tsv                         #  acr24530.azurecr.io
 
 
-
-ACR - acr4380.azurecr.io
-SQL PAssword - P2ssw0rd1234
-SQL Database - sqlserver4380.database.windows.net
-SQL user - sqladmin
+Variables
+----------
+ACR - acr24530.azurecr.io
+DatabaseName - mhcdb
+SQLserver - sqlserver24530.database.windows.net
+SQLpassword - P2ssw0rd1234
+SQLuser - sqladmin
 ------------------------------------------------------------------------------
 
-aksdemoRG4380
-akscluster4380
+aksdemoRG24530
+akscluster24530
 
-az aks get-credentials --resource-group aksdemoRG4380 --name akscluster4380
+az aks get-credentials --resource-group aksdemoRG24530 --name akscluster24530
 kubectl get pods
 
 kubectl get service mhc-front --watch
+
+
+kubectl scale deployment --replicas=3 mhc-front
 
 
