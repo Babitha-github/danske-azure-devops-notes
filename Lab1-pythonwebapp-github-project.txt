@@ -18,7 +18,8 @@ git init
 git add
 git commit 
 git add remote origin                    # create danske-pythonwebapp
-git push
+git branch     ---> to know whiats the branch  . its master
+git push -u origin master 
 
 
 
